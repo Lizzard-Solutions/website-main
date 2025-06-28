@@ -113,8 +113,8 @@ const resources = {
         info: {
           title: 'Contact Information',
           email: 'hello@lizzardsolutions.com',
-          phone: '+1 (555) 123-4567',
-          location: 'Remote Worldwide'
+          phone: '+381 (0)69 677304',
+          location: '7. Juli 36/14, Bor, Serbia'
         }
       },
       footer: {
@@ -239,8 +239,8 @@ const resources = {
         info: {
           title: 'Kontakt Informacije',
           email: 'hello@lizzardsolutions.com',
-          phone: '+1 (555) 123-4567',
-          location: 'Udaljeno Širom Sveta'
+          phone: '+381 (0)69 677304',
+          location: '7. Juli 36/14, Bor, Srbija'
         }
       },
       footer: {

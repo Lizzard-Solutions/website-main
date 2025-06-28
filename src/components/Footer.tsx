@@ -42,15 +42,15 @@ const Footer: React.FC = () => {
               <div className="flex items-center space-x-3">
                 <Phone className="h-4 w-4 text-gray-400" />
                 <a 
-                  href="tel:+15551234567" 
+                  href="tel:+381069677304" 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
-                  +1 (555) 123-4567
+                  +381 (0)69 677304
                 </a>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="h-4 w-4 text-gray-400" />
-                <span className="text-gray-300">Remote Worldwide</span>
+                <span className="text-gray-300">7. Juli 36/14, Bor, Serbia</span>
               </div>
             </div>
           </div>
