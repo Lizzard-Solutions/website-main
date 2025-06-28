@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 const Contact: React.FC = () => {
@@ -11,31 +11,72 @@ const Contact: React.FC = () => {
     service: '',
     project: ''
   });
-  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Basic validation
     if (!formData.name || !formData.email || !formData.project) {
       setStatus('error');
+      setErrorMessage(t('contact.form.error'));
       return;
     }
 
-    // Simulate form submission
-    setStatus('success');
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setStatus('idle');
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        service: '',
-        project: ''
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setStatus('error');
+      setErrorMessage('Please enter a valid email address.');
+      return;
+    }
+
+    setStatus('loading');
+    setErrorMessage('');
+
+    try {
+      // Get the Supabase URL from environment variables
+      const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+      
+      if (!supabaseUrl) {
+        throw new Error('Supabase URL not configured');
+      }
+
+      const response = await fetch(`${supabaseUrl}/functions/v1/send-contact-email`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+        },
+        body: JSON.stringify(formData),
       });
-    }, 3000);
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to send message');
+      }
+
+      setStatus('success');
+      
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setStatus('idle');
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          service: '',
+          project: ''
+        });
+      }, 3000);
+
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setStatus('error');
+      setErrorMessage(error instanceof Error ? error.message : 'Failed to send message. Please try again.');
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -43,6 +84,12 @@ const Contact: React.FC = () => {
       ...formData,
       [e.target.name]: e.target.value
     });
+    
+    // Clear error status when user starts typing
+    if (status === 'error') {
+      setStatus('idle');
+      setErrorMessage('');
+    }
   };
 
   return (
@@ -72,7 +119,8 @@ const Contact: React.FC = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200"
+                    disabled={status === 'loading'}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                     required
                   />
                 </div>
@@ -86,7 +134,8 @@ const Contact: React.FC = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200"
+                    disabled={status === 'loading'}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                     required
                   />
                 </div>
@@ -103,7 +152,8 @@ const Contact: React.FC = () => {
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200"
+                    disabled={status === 'loading'}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
                 <div>
@@ -115,7 +165,8 @@ const Contact: React.FC = () => {
                     name="service"
                     value={formData.service}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200"
+                    disabled={status === 'loading'}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <option value="">Select a service</option>
                     <option value="fullstack">{t('contact.form.serviceOptions.fullstack')}</option>
@@ -140,7 +191,8 @@ const Contact: React.FC = () => {
                   rows={5}
                   value={formData.project}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200 resize-none"
+                  disabled={status === 'loading'}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200 resize-none disabled:opacity-50 disabled:cursor-not-allowed"
                   required
                 ></textarea>
               </div>
@@ -155,17 +207,26 @@ const Contact: React.FC = () => {
               {status === 'error' && (
                 <div className="flex items-center space-x-2 text-red-600 bg-red-50 p-3 rounded-lg">
                   <AlertCircle className="h-5 w-5" />
-                  <span>{t('contact.form.error')}</span>
+                  <span>{errorMessage || t('contact.form.error')}</span>
                 </div>
               )}
 
               <button
                 type="submit"
-                disabled={status === 'success'}
+                disabled={status === 'loading' || status === 'success'}
                 className="w-full bg-black text-white px-8 py-4 rounded-lg hover:bg-gray-800 transition-all duration-300 flex items-center justify-center space-x-2 font-semibold disabled:opacity-50 disabled:cursor-not-allowed group"
               >
-                <span>{t('contact.form.submit')}</span>
-                <Send className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                {status === 'loading' ? (
+                  <>
+                    <Loader2 className="h-5 w-5 animate-spin" />
+                    <span>Sending...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>{t('contact.form.submit')}</span>
+                    <Send className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  </>
+                )}
               </button>
             </form>
           </div>
