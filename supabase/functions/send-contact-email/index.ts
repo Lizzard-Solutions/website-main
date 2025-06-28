@@ -85,7 +85,7 @@ serve(async (req) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'Lizzard Solutions Website <noreply@lizzardsolutions.com>',
+        from: 'Contact Form <no-reply-contact-form@lizzardsolutions.com>',
         to: [TO_EMAIL],
         reply_to: email,
         subject: emailSubject,
