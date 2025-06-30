@@ -246,7 +246,7 @@ const Contact: React.FC = () => {
                   <div>
                     <h4 className="font-semibold text-black mb-1">Email</h4>
                     <a 
-                      href="mailto:hello@lizzardsolutions.com" 
+                      href="mailto:nemanja@lizzardsolutions.com" 
                       className="text-gray-600 hover:text-black transition-colors"
                     >
                       {t('contact.info.email')}
