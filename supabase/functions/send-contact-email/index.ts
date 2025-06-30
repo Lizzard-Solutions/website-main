@@ -35,7 +35,7 @@ serve(async (req) => {
 
     // Email configuration
     const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY')
-    const TO_EMAIL = Deno.env.get('TO_EMAIL') || 'hello@lizzardsolutions.com'
+    const TO_EMAIL = Deno.env.get('TO_EMAIL') || 'nemanja@lizzardsolutions.com'
 
     if (!RESEND_API_KEY) {
       console.error('RESEND_API_KEY not found in environment variables')
