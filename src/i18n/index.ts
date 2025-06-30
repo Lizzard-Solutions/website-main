@@ -112,7 +112,7 @@ const resources = {
         },
         info: {
           title: 'Contact Information',
-          email: 'hello@lizzardsolutions.com',
+          email: 'nemanja@lizzardsolutions.com',
           phone: '+381 (0)69 677304',
           location: '7. Juli 36/14, Bor, Serbia'
         }
@@ -238,7 +238,7 @@ const resources = {
         },
         info: {
           title: 'Kontakt Informacije',
-          email: 'hello@lizzardsolutions.com',
+          email: 'nemanja@lizzardsolutions.com',
           phone: '+381 (0)69 677304',
           location: '7. Juli 36/14, Bor, Srbija'
         }
