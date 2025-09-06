@@ -7,13 +7,30 @@ import About from './components/About';
 import WhyChooseUs from './components/WhyChooseUs';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import TermsOfService from './components/TermsOfService';
+
+type ViewType = 'home' | 'privacy' | 'terms';
 
 function App() {
   const { i18n } = useTranslation();
+  const [currentView, setCurrentView] = React.useState<ViewType>('home');
 
   React.useEffect(() => {
     document.documentElement.lang = i18n.language;
   }, [i18n.language]);
+
+  const handleNavigateToPrivacy = () => setCurrentView('privacy');
+  const handleNavigateToTerms = () => setCurrentView('terms');
+  const handleBackToHome = () => setCurrentView('home');
+
+  if (currentView === 'privacy') {
+    return <PrivacyPolicy onBack={handleBackToHome} />;
+  }
+
+  if (currentView === 'terms') {
+    return <TermsOfService onBack={handleBackToHome} />;
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -23,7 +40,7 @@ function App() {
       <About />
       <WhyChooseUs />
       <Contact />
-      <Footer />
+      <Footer onNavigateToPrivacy={handleNavigateToPrivacy} onNavigateToTerms={handleNavigateToTerms} />
     </div>
   );
 }

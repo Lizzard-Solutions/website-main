@@ -1,0 +1,29 @@
+{
+  "name": "Lizzard Solutions - Professional IT Consultancy",
+  "short_name": "Lizzard Solutions",
+  "description": "Professional IT consultancy with 11+ years of experience. Full stack development, cloud solutions, cybersecurity, and AI integration for startups and small businesses.",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "16x16 32x32 48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/Lizzard Solutions-06.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/Lizzard Solutions-06.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/"
+}

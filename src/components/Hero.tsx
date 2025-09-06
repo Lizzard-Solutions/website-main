@@ -37,6 +37,13 @@ const Hero: React.FC = () => {
                 <span>{t('hero.cta')}</span>
                 <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </button>
+              <button
+                onClick={() => window.open('https://www.fiverr.com/shmexy030', '_blank')}
+                className="bg-green-600 text-white px-8 py-4 rounded-lg hover:bg-green-700 transition-all duration-300 flex items-center justify-center space-x-2 font-semibold text-lg group"
+              >
+                <span>{t('hero.fiverr')}</span>
+                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </button>
             </div>
 
             <div className="grid grid-cols-3 gap-8 pt-8 border-t border-gray-200">
@@ -44,14 +51,14 @@ const Hero: React.FC = () => {
                 <div className="flex justify-center mb-2">
                   <Award className="h-8 w-8 text-black" />
                 </div>
-                <div className="text-2xl font-bold text-black">15+</div>
+                <div className="text-2xl font-bold text-black">11+</div>
                 <div className="text-sm text-gray-600">{t('hero.experience')}</div>
               </div>
               <div className="text-center">
                 <div className="flex justify-center mb-2">
                   <Users className="h-8 w-8 text-black" />
                 </div>
-                <div className="text-2xl font-bold text-black">100+</div>
+                <div className="text-2xl font-bold text-black">33+</div>
                 <div className="text-sm text-gray-600">{t('hero.clients')}</div>
               </div>
               <div className="text-center">

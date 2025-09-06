@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Globe } from 'lucide-react';
+import { Menu, X, Globe, ChevronDown } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isProductsOpen, setIsProductsOpen] = useState(false);
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
@@ -15,6 +16,20 @@ const Header: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    const handleClickOutside = () => {
+      setIsProductsOpen(false);
+    };
+
+    if (isProductsOpen) {
+      document.addEventListener('click', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [isProductsOpen]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -58,6 +73,38 @@ const Header: React.FC = () => {
             >
               {t('nav.services')}
             </button>
+            
+            {/* Products Dropdown */}
+            <div className="relative">
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsProductsOpen(!isProductsOpen);
+                }}
+                className="flex items-center space-x-1 text-gray-700 hover:text-black transition-colors font-medium"
+              >
+                <span>{t('nav.products')}</span>
+                <ChevronDown className={`h-4 w-4 transition-transform ${isProductsOpen ? 'rotate-180' : ''}`} />
+              </button>
+              
+              {isProductsOpen && (
+                <div className="absolute top-full left-0 mt-2 w-48 bg-white shadow-lg rounded-lg border border-gray-200 z-50">
+                  <div className="py-2">
+                    <button
+                      onClick={() => {
+                        window.open('https://konverter.lizzardsolutions.com', '_blank');
+                        setIsProductsOpen(false);
+                      }}
+                      className="flex items-center space-x-3 w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-black transition-colors"
+                    >
+                      <i className="fas fa-exchange-alt text-blue-600"></i>
+                      <span>{t('products.konverter')}</span>
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+            
             <button
               onClick={() => scrollToSection('about')}
               className="text-gray-700 hover:text-black transition-colors font-medium"
@@ -114,6 +161,22 @@ const Header: React.FC = () => {
               >
                 {t('nav.services')}
               </button>
+              
+              {/* Products Section for Mobile */}
+              <div className="px-3 py-2">
+                <div className="text-gray-700 font-medium mb-2">{t('nav.products')}</div>
+                <button
+                  onClick={() => {
+                    window.open('https://konverter.lizzardsolutions.com', '_blank');
+                    setIsMenuOpen(false);
+                  }}
+                  className="flex items-center space-x-3 w-full text-left px-4 py-2 text-gray-600 hover:text-black transition-colors bg-gray-50 rounded-lg"
+                >
+                  <i className="fas fa-exchange-alt text-blue-600"></i>
+                  <span>{t('products.konverter')}</span>
+                </button>
+              </div>
+              
               <button
                 onClick={() => scrollToSection('about')}
                 className="block w-full text-left px-3 py-2 text-gray-700 hover:text-black transition-colors font-medium"

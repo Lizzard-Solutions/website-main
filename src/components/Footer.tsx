@@ -2,7 +2,12 @@ import React from 'react';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigateToPrivacy?: () => void;
+  onNavigateToTerms?: () => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ onNavigateToPrivacy, onNavigateToTerms }) => {
   const { t } = useTranslation();
 
   const scrollToSection = (sectionId: string) => {
@@ -51,6 +56,16 @@ const Footer: React.FC = () => {
               <div className="flex items-center space-x-3">
                 <MapPin className="h-4 w-4 text-gray-400" />
                 <span className="text-gray-300">7. Juli 36/14, Bor, Serbia</span>
+              </div>
+            </div>
+            
+            {/* Company Registration Info */}
+            <div className="mt-6 pt-6 border-t border-gray-800">
+              <h4 className="text-sm font-semibold text-gray-400 mb-3">{t('footer.companyInfo.title')}</h4>
+              <div className="space-y-2 text-sm text-gray-400">
+                <div>{t('footer.companyInfo.pib')}</div>
+                <div>{t('footer.companyInfo.mb')}</div>
+                <div>{t('footer.companyInfo.founded')}</div>
               </div>
             </div>
           </div>
@@ -123,9 +138,12 @@ const Footer: React.FC = () => {
                 </button>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <button 
+                  onClick={onNavigateToPrivacy}
+                  className="text-gray-300 hover:text-white transition-colors text-left"
+                >
                   {t('footer.privacy')}
-                </a>
+                </button>
               </li>
             </ul>
           </div>
@@ -137,12 +155,18 @@ const Footer: React.FC = () => {
               © 2025 Lizzard Solutions. {t('footer.rights')}
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
+              <button 
+                onClick={onNavigateToPrivacy}
+                className="text-gray-400 hover:text-white transition-colors text-sm"
+              >
                 {t('footer.privacy')}
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
+              </button>
+              <button 
+                onClick={onNavigateToTerms}
+                className="text-gray-400 hover:text-white transition-colors text-sm"
+              >
                 {t('footer.terms')}
-              </a>
+              </button>
             </div>
           </div>
         </div>

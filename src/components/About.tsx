@@ -24,7 +24,7 @@ const About: React.FC = () => {
 
             <div className="grid grid-cols-3 gap-6">
               <div className="text-center">
-                <div className="text-3xl font-bold text-black mb-2">15+</div>
+                <div className="text-3xl font-bold text-black mb-2">11+</div>
                 <div className="text-sm text-gray-600">{t('about.experience')}</div>
               </div>
               <div className="text-center">
@@ -47,7 +47,7 @@ const About: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-black mb-2">Proven Expertise</h4>
-                    <p className="text-gray-600 text-sm">15+ years of delivering successful IT solutions across various industries and technologies.</p>
+                    <p className="text-gray-600 text-sm">11+ years of delivering successful IT solutions across various industries and technologies.</p>
                   </div>
                 </div>
 
