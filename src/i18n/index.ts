@@ -12,7 +12,7 @@ const resources = {
         contact: 'Contact'
       },
       hero: {
-        title: 'Professional IT Solutions',
+        title: 'Professional IT/AI Solutions',
         subtitle: 'with 11+ Years of Expertise',
         description: 'Empowering startups and small businesses with cutting-edge technology solutions. From full-stack development to AI integration, we deliver results that drive growth.',
         cta: 'Get Free Consultation',
@@ -26,7 +26,7 @@ const resources = {
       },
       services: {
         title: 'Our Services',
-        subtitle: 'Comprehensive IT solutions tailored for your business needs',
+        subtitle: 'Comprehensive IT/AI solutions tailored for your business needs',
         fullstack: {
           title: 'Full Stack Development',
           description: 'End-to-end web and mobile application development using modern technologies and best practices.'
@@ -59,7 +59,7 @@ const resources = {
       about: {
         title: 'About Lizzard Solutions',
         subtitle: 'Solo expertise with enterprise-level results',
-        description: 'With over 1 years in the IT industry, Lizzard Solutions specializes in delivering high-quality technology solutions for startups and small businesses. Our solo-run consultancy model ensures personalized attention, direct communication, and cost-effective solutions without the overhead of large agencies.',
+        description: 'With over 11 years in the IT/AI industry, Lizzard Solutions specializes in delivering high-quality technology solutions for startups and small businesses. Our solo-run consultancy model ensures personalized attention, direct communication, and cost-effective solutions without the overhead of large agencies.',
         experience: 'Years of Experience',
         focus: 'Startup & SMB Focus',
         approach: 'Personal Approach'
@@ -123,7 +123,7 @@ const resources = {
         }
       },
       footer: {
-        description: 'Professional IT consultancy specializing in startup and small business technology solutions.',
+        description: 'Professional IT/AI consultancy specializing in startup and small business technology solutions.',
         services: 'Services',
         company: 'Company',
         contact: 'Contact',
@@ -196,7 +196,7 @@ const resources = {
           },
           section2: {
             title: '2. Services Provided',
-            content: 'Lizzard Solutions provides IT consulting services including but not limited to:',
+            content: 'Lizzard Solutions provides IT/AI consulting services including but not limited to:',
             item1: 'Full stack web and mobile application development',
             item2: 'Cloud solutions and infrastructure management',
             item3: 'Cybersecurity consulting and implementation',
@@ -250,7 +250,7 @@ const resources = {
         contact: 'Kontakt'
       },
       hero: {
-        title: 'Profesionalna IT Rešenja',
+        title: 'Profesionalna IT/AI Rešenja',
         subtitle: 'sa 11+ Godina Iskustva',
         description: 'Osnažujemo startape i mala preduzeća najsavremenijim tehnološkim rešenjima. Od full-stack razvoja do AI integracije, pružamo rezultate koji pokreću rast.',
         cta: 'Besplatna Konsultacija',
@@ -264,7 +264,7 @@ const resources = {
       },
       services: {
         title: 'Naše Usluge',
-        subtitle: 'Sveobuhvatna IT rešenja prilagođena potrebama vašeg poslovanja',
+        subtitle: 'Sveobuhvatna IT/AI rešenja prilagođena potrebama vašeg poslovanja',
         fullstack: {
           title: 'Full Stack Razvoj',
           description: 'Kompletan razvoj web i mobilnih aplikacija koristeći moderne tehnologije i najbolje prakse.'
@@ -297,7 +297,7 @@ const resources = {
       about: {
         title: 'O Lizzard Solutions',
         subtitle: 'Solo ekspertiza sa rezultatima na nivou preduzeća',
-        description: 'Sa preko 11 godina u IT industriji, Lizzard Solutions se specijalizuje za pružanje visokokvalitetnih tehnoloških rešenja za startape i mala preduzeća. Naš solo konsultantski model obezbeđuje personalizovanu pažnju, direktnu komunikaciju i isplativa rešenja bez troškova velikih agencija.',
+        description: 'Sa preko 11 godina u IT/AI industriji, Lizzard Solutions se specijalizuje za pružanje visokokvalitetnih tehnoloških rešenja za startape i mala preduzeća. Naš solo konsultantski model obezbeđuje personalizovanu pažnju, direktnu komunikaciju i isplativa rešenja bez troškova velikih agencija.',
         experience: 'Godina Iskustva',
         focus: 'Fokus na Startape i MSP',
         approach: 'Personalni Pristup'
@@ -361,7 +361,7 @@ const resources = {
         }
       },
       footer: {
-        description: 'Profesionalni IT konsalting specijalizovan za tehnološka rešenja za startape i mala preduzeća.',
+        description: 'Profesionalni IT/AI konsalting specijalizovan za tehnološka rešenja za startape i mala preduzeća.',
         services: 'Usluge',
         company: 'Kompanija',
         contact: 'Kontakt',
@@ -434,7 +434,7 @@ const resources = {
           },
           section2: {
             title: '2. Pružene usluge',
-            content: 'Lizzard Solutions pruža IT konsultantske usluge uključujući ali ne ograničavajući se na:',
+            content: 'Lizzard Solutions pruža IT/AI konsultantske usluge uključujući ali ne ograničavajući se na:',
             item1: 'Full stack razvoj veb i mobilnih aplikacija',
             item2: 'Cloud rešenja i upravljanje infrastrukturom',
             item3: 'Kiberbezbedonosno savetovanje i implementacija',
