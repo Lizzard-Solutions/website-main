@@ -16,7 +16,7 @@ import {
   
   // Combined initialization
   export const initializeAllAnalytics = () => {
-    const clarityProjectId = import.meta.env.VITE_CLARITY_PROJECT_ID;
+    const clarityProjectId = import.meta.env.VITE_CLARITY_PROJECT_ID || "t9wqky2pnf";
     const gaTrackingId = import.meta.env.VITE_GA_TRACKING_ID || 'G-L5RWENJEFW';
   
     // Initialize Clarity
