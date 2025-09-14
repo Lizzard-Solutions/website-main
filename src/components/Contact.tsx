@@ -57,18 +57,13 @@ const Contact: React.FC = () => {
     }
 
     try {
-      // Get the Supabase URL from environment variables
-      const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-      
-      if (!supabaseUrl) {
-        throw new Error('Supabase URL not configured');
-      }
+  
 
-      const response = await fetch(`${supabaseUrl}/functions/v1/send-contact-email`, {
+      const response = await fetch(`/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+
         },
         body: JSON.stringify(formData),
       });

@@ -1,15 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ArrowRight, Award, Users, Zap } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import CalendarPopup from './CalendarPopup';
 
 const Hero: React.FC = () => {
   const { t } = useTranslation();
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  const showCalendar = () => {
+    setIsCalendarOpen(true);
   };
 
   return (
@@ -31,7 +30,7 @@ const Hero: React.FC = () => {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <button
-                onClick={scrollToContact}
+                onClick={showCalendar}
                 className="bg-black text-white px-8 py-4 rounded-lg hover:bg-gray-800 transition-all duration-300 flex items-center justify-center space-x-2 font-semibold text-lg group"
               >
                 <span>{t('hero.cta')}</span>
@@ -93,6 +92,11 @@ const Hero: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <CalendarPopup 
+        isOpen={isCalendarOpen} 
+        onClose={() => setIsCalendarOpen(false)} 
+      />
     </section>
   );
 };
