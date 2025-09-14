@@ -71,11 +71,15 @@ const Contact: React.FC = () => {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.error || 'Failed to send message');
+        // result is of type unknown, so we need to safely extract error message
+        let errorMsg = 'Failed to send message';
+        if (result && typeof result === 'object' && 'error' in result && typeof (result as any).error === 'string') {
+          errorMsg = (result as any).error;
+        }
+        throw new Error(errorMsg);
       }
 
       setStatus('success');
-      
       // Track successful form submission
       analytics.trackForm('contact_form_success', true);
       
@@ -343,7 +347,7 @@ const Contact: React.FC = () => {
                 </div>
               </div>
             </div>
-
+                      <a href='https://www.linkedin.com/in/n-vukmirovic/' target='_blank'>
             <div 
               className="bg-black text-white rounded-2xl p-8 cursor-pointer hover:bg-gray-900 transition-colors"
               onClick={() => {
@@ -364,8 +368,9 @@ const Contact: React.FC = () => {
                 <span>No obligation project assessment</span>
               </div>
             </div>
+            </a>
           </div>
-        </div>
+        </div>    
       </div>
     </section>
   );

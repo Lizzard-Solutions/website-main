@@ -1,41 +1,63 @@
 {
-	"name": "ls-site",
-	"compatibility_date": "2024-01-15",
-	"compatibility_flags": [
-		"nodejs_compat"
-	],
-	"main": "src/index.ts",
-	"build": {
-		"command": "npm run build"
-	},
-	"assets": {
-		"directory": "dist",
-		"binding": "ASSETS"
-	},
-
-	"env": {
-		"production": {
-			"name": "ls-site-prod"
-			
-		},
-		"staging": {
-			"name": "ls-site-staging",
-			"routes": [
-				{
-					"pattern": "staging.your-domain.com/*",
-					"zone_name": "your-domain.com"
-				}
-			]
+"name": "ls-site",
+"compatibility_date": "2024-01-15",
+"compatibility_flags": [
+	"nodejs_compat"
+],
+"main": "src/index.ts",
+"build": {
+	"command": "npm run build"
+},
+"assets": {
+	"directory": "dist",
+	"binding": "ASSETS"
+},
+"routes": [
+	{
+		"pattern": "lizzardsolutions.com/*",
+		"zone_name": "lizzardsolutions.com"
+	}
+],
+"env": {
+	"production": {
+		"name": "ls-site-prod",
+		"routes": [
+			{
+		"pattern": "lizzardsolutions.com/*",
+		"zone_name": "lizzardsolutions.com"
+			}
+		],
+		"vars": {
+			"NODE_ENV": "production",
+			"VITE_CLARITY_PROJECT_ID": "t9wqky2pnf",
+			"VITE_GA_TRACKING_ID": "G-L5RWENJEFW"
 		}
 	},
-	"vars": {
-		"NODE_ENV": "production"
-	},
-	"d1_databases": [
-		{
-			"binding": "DB",
-			"database_name": "contactFormMessages",
-			"database_id": "cabd0ee9-a367-46ab-9131-ce8e33201d6e"
+	"staging": {
+		"name": "ls-site-staging",
+		"routes": [
+			{
+				"pattern": "staging.lsrs.site/*",
+				"zone_name": "lsrs.site"
+			}
+		],
+		"vars": {
+			"NODE_ENV": "staging",
+			"VITE_CLARITY_PROJECT_ID": "t9wqky2pnf",
+			"VITE_GA_TRACKING_ID": "G-L5RWENJEFW"
 		}
-	]
+	}
+},
+"vars": {
+	"NODE_ENV": "development",
+	"VITE_CLARITY_PROJECT_ID": "t9wqky2pnf",
+	"VITE_GA_TRACKING_ID": "G-L5RWENJEFW"
+},
+"d1_databases": [
+	{
+		"binding": "DB",
+		"database_name": "contactFormMessages",
+		"database_id": "cabd0ee9-a367-46ab-9131-ce8e33201d6e"
+	}
+]
 }
