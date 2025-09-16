@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 interface FooterProps {
@@ -42,6 +42,17 @@ const Footer: React.FC<FooterProps> = ({ onNavigateToPrivacy, onNavigateToTerms 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   nemanja@lizzardsolutions.com
+                </a>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Linkedin className="h-4 w-4 text-gray-400" />
+                <a
+                  href="https://www.linkedin.com/in/n-vukmirovic/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-300 hover:text-white transition-colors"
+                >
+                  n-vukmirovic
                 </a>
               </div>
               <div className="flex items-center space-x-3">
