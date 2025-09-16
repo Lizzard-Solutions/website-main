@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import { useTranslation } from 'react-i18next';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -11,15 +11,15 @@ import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsOfService from './components/TermsOfService';
 import { initializeClarity, trackPageView, setCustomTag } from './utils/clarity';
 
+
 type ViewType = 'home' | 'privacy' | 'terms';
 
 function App() {
   const { i18n } = useTranslation();
   const [currentView, setCurrentView] = React.useState<ViewType>('home');
 
-  // Initialize Clarity when the app loads
   useEffect(() => {
-    const clarityProjectId = import.meta.env.VITE_CLARITY_PROJECT_ID;
+    const clarityProjectId = import.meta.env.VITE_CLARITY_PROJECT_ID ||  "t9wqky2pnf"
     
     if (clarityProjectId) {
       try {
@@ -32,7 +32,6 @@ function App() {
       console.warn('Clarity Project ID not found. Please add VITE_CLARITY_PROJECT_ID to your .env file');
     }
   }, []);
-
   // Track language changes
   React.useEffect(() => {
     document.documentElement.lang = i18n.language;

@@ -22,7 +22,7 @@ export const initializeClarity = (projectId: string) => {
     
     // Set initial tags
     setCustomTag('app_version', '1.0.0');
-    setCustomTag('framework', 'React');
+    setCustomTag('framework', 'vite');
     setCustomTag('company', 'Lizzard Solutions');
     
   } catch (error) {
